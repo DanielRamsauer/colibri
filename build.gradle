@@ -77,10 +77,11 @@ subprojects {
 		manifest.attributes 'Bundle-Classpath': '.'
 	}
 	
-	task osgi(dependsOn: jar) <<
-	{
-		println "copying jar from $jar.archivePath to $felixBundleDir"
-		ant.copy(file:jar.archivePath, todir:felixBundleDir)
+	task osgi(dependsOn: jar) {
+		doLast {
+			println "copying jar from $jar.archivePath to $felixBundleDir"
+			ant.copy(file:jar.archivePath, todir:felixBundleDir)
+		}
 	}
 	
 	eclipse
